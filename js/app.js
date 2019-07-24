@@ -18,7 +18,15 @@ document.getElementById('buscarBtn').addEventListener('click', (e) => {
     // validar buscador
     if(textoBuscador !== ''){
 
+        eventBrite.obtenerEventos(textoBuscador, categoriaSeleccionada)
+                  .then(data => {
+                      console.log(data);
+                  });
+
     }else{
+
+        // mostrar mensaje de alerta
+        ui.mostrarMensaje('Escribe algo en el buscador', 'alert alert-danger mt-4 text-center');
 
     }
     

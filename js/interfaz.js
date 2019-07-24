@@ -39,4 +39,27 @@ class Interfaz{
               })
 
     }
+
+    mostrarMensaje(mensaje, clases){
+
+        const div = document.createElement('div');
+        div.classList = clases;
+        div.appendChild(document.createTextNode(mensaje));
+        const buscadorDiv = document.querySelector('#buscador');
+        buscadorDiv.appendChild(div);
+
+        setTimeout(() => {
+            this.limpiarMensaje();
+        }, 3000);
+    }
+
+    limpiarMensaje(){
+
+        const alert =  document.querySelector('.alert');
+
+        if(alert){
+
+            alert.remove();
+        }
+    }
 }
