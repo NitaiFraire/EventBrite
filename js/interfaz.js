@@ -9,7 +9,6 @@ class Interfaz{
 
     }
 
-
     //Método para cuando inicie la app
     init(){
 
@@ -38,6 +37,47 @@ class Interfaz{
                 });
               })
 
+    }
+
+
+    // recibe respuesta de eventos y muestra resultados
+    mostrarEventos(eventos){
+
+        // leeer eventos y agregarlo
+        const listaEventos = eventos.events;
+
+        console.log(listaEventos);
+        // recorrer eventos y crear template
+
+        this.limpiarResultados();
+
+        listaEventos.forEach( evento  =>{
+
+            this.listado.innerHTML += `
+            
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                            <img class="img-fluid mb-2" src="${evento.logo !==  null ? evento.logo.url : ''}">                            
+                        <div class="card-body">
+                            <div class="card-text">
+                                <h2 class="text-center">${evento.name.text}</h2>
+                                <p class="lead text-info">Información del evento</p>
+                                <p>${evento.description.text.substring(0, 200)}...</p>
+                                <span class="badge badge-primary">Capacidad: ${evento.capacity}</span>
+                                <span class="badge badge-secondary">Fecha y Hora: ${evento.start.local}</span>
+                                <a href="${evento.url}" target="_blank" class="btn btn-primary btn-block mt-4">Comprar boletos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    // limpia resultados previos
+    limpiarResultados(){
+
+        this.listado.innerHTML = '';
     }
 
     mostrarMensaje(mensaje, clases){

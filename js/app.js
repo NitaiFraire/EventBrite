@@ -20,7 +20,15 @@ document.getElementById('buscarBtn').addEventListener('click', (e) => {
 
         eventBrite.obtenerEventos(textoBuscador, categoriaSeleccionada)
                   .then(data => {
-                      console.log(data);
+
+                      if(data.events.length > 0){
+                            
+                            ui.mostrarEventos(data);
+
+                      }else{
+
+                            ui.mostrarMensaje('No hay resultados', 'alert alert-danger mt-4');
+                      }
                   });
 
     }else{
